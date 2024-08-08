@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <div class="col-md-6">
+                <label for="name" class="form-label">İsim</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                <span class="text-danger" *ngIf="!name?.valid &&(name?.dirty || name?.touched)">İsim gereklidir.</span>
+                
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Soy isim</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                <span class="text-danger" *ngIf="!lastName?.valid &&(lastName?.dirty || lastName?.touched)">Soy isim gereklidir.</span>
+            </div>
+            <div class="col-md-6">
+              <label for="faculty" class="form-label">Fakülte</label>
+              <input class="form-control" id="faculty" placeholder="Faculty" formControlName="faculty">
+              <span class="text-danger" *ngIf="!faculty?.valid &&(faculty?.dirty || faculty?.touched)">Fakülte gereklidir.</span>
+            </div>
+            <div class="col-md-6">
+                <label for="department" class="form-label">Bölüm</label>
+                <input class="form-control" id="department" placeholder="Department" formControlName="department">
+                <span class="text-danger" *ngIf="!department?.valid &&(department?.dirty || department?.touched)">Bölüm gereklidir.</span>
+            </div>
+            <div class="col-12">
+              <label for="phoneNumber" class="form-label">Telefon Numarası</label>
+              <input type="text" class="form-control" id="" placeholder="0532" formControlName="phoneNumber" ngModel maxlength="11">
+              <span style="color: green;">Telefon numarasını 0 ile birlikte aralarda boşluk olmadan giriniz.</span><br>
+              <span class="text-danger" *ngIf="!phoneNumber?.valid &&(phoneNumber?.dirty || phoneNumber?.touched)">Telefon numarası gereklidir.</span>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="inputZip" class="form-label">Daha Önce Halk Oyunları Ekibinde oynadın mı?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" (click)="toggleInputVisibility()" formControlName="isPlaysBefore">
+                <label class="form-check-label" for="gridCheck">
+                  Evet
+                </label>
+              </div>
+            </div>
+            <div class="col-md-8" *ngIf="inputVisible">
+                <label for="whichSquad" class="form-label">Daha önce onyadığın ekip/ekipler</label>
+                <input class="form-control" id="whichSquad" placeholder="Team" formControlName="whichSquad">
+                <span class="text-danger" *ngIf="!whichSquad?.valid &&(whichSquad?.dirty || whichSquad?.touched)">Ekip gereklidir.</span>
+            </div>
+            <div class="col-12">
+              
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Kayıt Ol </button>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="httpStatus==201">
+              Kaydınız Başarıyla Gerçekleşti 
+            </div>
+          </form>  
+    </div>
+</div>
