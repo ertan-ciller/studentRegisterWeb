@@ -10,7 +10,7 @@ import { Students } from 'src/shared/students';
 export class RestApiService {
 
   constructor(private http: HttpClient) { }
-  apiUrl = 'http://localhost:8080/api/students';
+  apiUrl = 'http://93.177.100.252:8080/api/students';
 
   httpOptions = {
     headers : new HttpHeaders({'Content-Type': 'application/json'})
